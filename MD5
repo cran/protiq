@@ -1,5 +1,5 @@
-e13f392c0754c2176a3425e638aa9ecc *DESCRIPTION
-d1c001a24ee7ef2a93fdce0c20b89829 *NAMESPACE
+cf26bc2600e79ef969b8f2b6177a65a1 *DESCRIPTION
+7955b2460d547bb225ee57f378932f70 *NAMESPACE
 582356efdcb0fc9256354435e8a66f4d *R/protiq.R
 679f737d592b3d07e279fa16cb262cbb *R/scampi_classes.R
 acccecea969e079638c532393f963cf8 *data/leptoSRM.rda
@@ -21,4 +21,4 @@ f59928bfcd5890d5a21d89e4778a3eef *man/quantifyProtein.Rd
 3c7354f5fa7022c46d234b39ee7db7ae *man/runScampi.Rd
 84f26351fd53d222b721f0ef71890624 *man/scampi-class.Rd
 4cca272e726087779e7032d921866506 *man/scampiVal-class.Rd
-3b999c7b019802444090522dc9fcb0fb *tests/test_scampi.R
+276f2873657d8240cab7e321ee587b65 *tests/test_scampi.R

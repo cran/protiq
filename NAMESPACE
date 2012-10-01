@@ -4,8 +4,6 @@ import(
    "graph", 
    "RBGL")
 
-importFrom("graphics", plot)
-
 export(
    "scampi",
    "scampiVal",

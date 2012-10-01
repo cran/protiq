@@ -12,7 +12,8 @@ if (nrow(dataTest@peptides) != 151 ||
 
 dataChecked <-
   checkInputData(new("scampi", peptides=leptoSRMpeptides,
-                     proteins=leptoSRMproteins, edgespp=leptoSRMedgespp))
+                     proteins=leptoSRMproteins, edgespp=leptoSRMedgespp),
+                     rescaling=FALSE)
 if (nrow(dataChecked@peptides) != 151 ||
     nrow(dataChecked@proteins) != 39 ||
     nrow(dataChecked@edgespp) != 151) {
@@ -42,7 +43,7 @@ protiq:::isInCC(3, 21, group="peptides", ppComponents)
 protiq:::getMyCCNr(24, "peptides", ppComponents)
 
 ## preprocessing the input data
-tmpPrepro <- preprocessInputData(dataChecked, rescaling=TRUE)
+tmpPrepro <- preprocessInputData(dataChecked)
 dataPrepro <- tmpPrepro[["dataPrepro"]]
 ppGraph <- tmpPrepro[["ppGraph"]]
 ppComponents <- tmpPrepro[["ccList"]]
