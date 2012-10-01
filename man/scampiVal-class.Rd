@@ -1,6 +1,7 @@
 \name{scampiVal-class}
 \docType{class}
 \alias{scampiVal-class}
+\alias{scampiVal}
 \alias{plot,scampiVal,missing-method}
 \alias{show,scampiVal-method}
 \alias{summary,scampiVal-method}

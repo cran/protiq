@@ -35,7 +35,7 @@ default values.
 }
 \examples{
 data("leptoSRM")
-dataChecked <- checkInputData(new("scampi", peptides=leptoSRMpeptides,
-                                  proteins=leptoSRMproteins, 
-                                  edgespp=leptoSRMedgespp))
+dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides,
+                                     proteins=leptoSRMproteins, 
+                                     edgespp=leptoSRMedgespp))
 }

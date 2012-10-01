@@ -46,9 +46,9 @@ Sarah Gerster \email{sarah.gerster@isb-sib.ch}
 \dontrun{
 data("leptoSRM")
 
-dataChecked <- checkInputData(new("scampi", peptides=leptoSRMpeptides, 
-                                  proteins=leptoSRMproteins, 
-                                  edgespp=leptoSRMedgespp))
+dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides, 
+                                     proteins=leptoSRMproteins, 
+                                     edgespp=leptoSRMedgespp))
 tmpPrepro <- preprocessInputData(dataChecked, rescaling=TRUE)
 dataPrepro <- tmpPrepro[["dataPrepro"]]
 ppGraph <- tmpPrepro[["ppGraph"]]

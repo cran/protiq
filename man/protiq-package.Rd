@@ -24,7 +24,7 @@ Sarah Gerster (maintainer) \email{sarah.gerster@isb-sib.ch}
 Peter Buehlmann
 }
 \references{
-Gerster et al. Protein and gene model inference based on statistical modeling in k-partite graphs (2010) \emph{PNAS}
+Gerster, S., Qeli, E., Ahrens, C.H. and Buehlmann, P. (2010). Protein and gene model inference based on statistical modeling in k-partite graphs. \emph{Proceedings of the National Academy of Sciences} 107(27):12101-12106.
 }
 \keyword{ package }
 \seealso{

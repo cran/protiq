@@ -42,9 +42,9 @@ This function is called by one of the main functions of the package, \code{\link
 }
 \examples{
 data("leptoSRM")
-dataChecked <- checkInputData(new("scampi", peptides=leptoSRMpeptides, 
-                                  proteins=leptoSRMproteins, 
-                                  edgespp=leptoSRMedgespp))
+dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides, 
+                                     proteins=leptoSRMproteins, 
+                                     edgespp=leptoSRMedgespp))
 dataPrepro <- preprocessInputData(dataChecked, rescaling=FALSE)
 }
 \keyword{ preprocessing }

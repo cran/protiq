@@ -50,10 +50,9 @@ This function is intended to assess a single peptide when the parameter values h
 ## get data
 data("leptoSRM")
 ## check input data
-dataChecked <- checkInputData(scampiData=new("scampi", 
-                                             peptides=leptoSRMpeptides, 
-                                             proteins=leptoSRMproteins,
-                                             edgespp=leptoSRMedgespp))
+dataChecked <- checkInputData(scampiData=scampi(peptides=leptoSRMpeptides, 
+                                                proteins=leptoSRMproteins,
+                                                edgespp=leptoSRMedgespp))
 ## preprocess input data
 tmpPrepro <- preprocessInputData(scampiData=dataChecked, rescaling=FALSE) 
 dataPrepro <- tmpPrepro[["dataPrepro"]]

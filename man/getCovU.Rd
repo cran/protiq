@@ -33,10 +33,11 @@ Sarah Gerster \email{sarah.gerster@isb-sib.ch}
 ## get data
 data("leptoSRM")
 ## check input data
+#dataChecked <- 
 dataChecked <- 
-  checkInputData(scampiData=new("scampi", peptides=leptoSRMpeptides, 
-                                proteins=leptoSRMproteins,
-                                edgespp=leptoSRMedgespp))		        
+  checkInputData(scampiData=scampi(peptides=leptoSRMpeptides, 
+                                   proteins=leptoSRMproteins,
+                                   edgespp=leptoSRMedgespp))		        
 ## preprocess input data
 tmpPrepro <- preprocessInputData(scampiData=dataChecked, rescaling=FALSE) 
 dataPrepro <- tmpPrepro[["dataPrepro"]]

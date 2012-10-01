@@ -16,7 +16,6 @@ BETA2_MIN_CONST <- 0.01
 TAU2_MIN_CONST <- 0.01
 DENSITY_CONST <- 1e-300
 
-
 ## ######################## ##
 ## MAIN FUNCTIONS (EXPORTED)##
 ## ######################## ##
@@ -1490,7 +1489,7 @@ show.scampiVal <- function(object) {
 ## ####################### ##
 ## SET METHODS FOR CLASSES ##
 ## ####################### ##
-setOldClass("scampiVal")
+#setOldClass("scampiVal")
 setMethod("show", "scampiVal", show.scampiVal)
 
 setMethod("summary", "scampiVal", summary.scampiVal)
@@ -1498,7 +1497,7 @@ setMethod("summary", "scampiVal", summary.scampiVal)
 setMethod("plot", signature(x = "scampiVal", y = "missing"),
           function(x, y, ...) plot.scampiVal(x,...))
 
-setOldClass("scampi")
+#setOldClass("scampi")
 setMethod("show", "scampi", show.scampi)
 
 setMethod("summary", "scampi", summary.scampi)

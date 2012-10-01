@@ -1,4 +1,5 @@
 import(
+   "methods",
    "mvtnorm", 
    "graph", 
    "RBGL")
@@ -6,6 +7,8 @@ import(
 importFrom("graphics", plot)
 
 export(
+   "scampi",
+   "scampiVal",
    "runScampi",
    "iterateScampi",
    "estimateModelParameters",
