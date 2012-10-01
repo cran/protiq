@@ -81,11 +81,11 @@ runScampi <- function(peptides, proteins, edgespp, rescaling=TRUE,
   dataIn <- scampi(peptides=peptides, proteins=proteins, edgespp=edgespp)
 
   ## check input data
-  dataChecked <- checkInputData(dataIn, verbose)
+  dataChecked <- checkInputData(dataIn, rescaling=rescaling,
+                                verbose=verbose)
     
   ## preprocess input data
-  tmpPrepro <- preprocessInputData(dataChecked, rescaling=rescaling,
-                                   verbose=verbose)
+  tmpPrepro <- preprocessInputData(dataChecked, verbose=verbose)
   dataPrepro <- tmpPrepro[["dataPrepro"]]
   ppGraph <- tmpPrepro[["ppGraph"]]
   ccList <- tmpPrepro[["ccList"]]
@@ -216,7 +216,8 @@ iterateScampi <- function(peptides, proteins, edgespp, rescaling=TRUE,
     }
 
     ## remove outliers from peptide dataframe
-    peptides.outlier <- peptides[peptides[,"outlier"],]
+    peptides.outlier <- peptides[peptides[,"outlier"],
+                                 c("pepSeq", "pepQty", "pepObs")]
     peptides.new <- peptides[!peptides[,"outlier"],]
     nPeptides <- nrow(peptides.new)
     
@@ -261,13 +262,16 @@ iterateScampi <- function(peptides, proteins, edgespp, rescaling=TRUE,
 
 checkInputData <- function(scampiData, ...) UseMethod("checkInputData")
 
-checkInputData.scampi <- function(scampiData, verbose=FALSE, ...) 
+checkInputData.scampi <- function(scampiData, rescaling=TRUE,
+                                  verbose=FALSE, ...) 
 {
   ## Purpose: Perform some consistency checks on the input data to ensure
   ##          that the protein quantification and, optionally, the peptide
   ##          reassessment will work smoothly.
   ## ----------------------------------------------------------------------
   ## Arguments: scampiData: object of class 'scampi'
+  ##            rescaling:  if TRUE, transform peptide abundance scores by
+  ##                        log10()
   ##            verbose:    if not FALSE, provide minimal progress info  
   ## ----------------------------------------------------------------------
   ## Author: Sarah Gerster, Date: 10 Aug 2012, 10:23
@@ -305,6 +309,11 @@ checkInputData.scampi <- function(scampiData, verbose=FALSE, ...)
            "they hold NA, NaN, Inf or -Inf")
   } else {
     peptides[,"pepObs"] <- 1
+  }
+  if (rescaling) {
+    if (any(peptides[,"pepQty"] <= 0))
+      stop("check your peptide abundances, they contain zero or values < 0")
+    peptides[,"pepQty"] <- log10(peptides[,"pepQty"])
   }
   nPeptides <- nrow(peptides)
   
@@ -351,16 +360,13 @@ checkInputData.scampi <- function(scampiData, verbose=FALSE, ...)
           
 preprocessInputData <- function(scampiData, ...) UseMethod("preprocessInputData")
 
-preprocessInputData.scampi <- function(scampiData, rescaling=TRUE,
-                                       verbose=FALSE, ...) 
+preprocessInputData.scampi <- function(scampiData, verbose=FALSE, ...) 
 {
   ## Purpose: Preprocess the graph structure and connected components
   ##          as much as possible to speed up computations for parameter
   ##          estimation and peptide/protein abundance predictions.
   ## ----------------------------------------------------------------------
   ## Arguments: scampiData: object of class 'scampi'
-  ##            rescaling:  if TRUE, transform peptide abundance scores by
-  ##                        log10()
   ##            verbose:    if not FALSE, provide minimal progress info  
   ## ----------------------------------------------------------------------
   ## Dependencies: package  'RBGL'
@@ -406,8 +412,6 @@ preprocessInputData.scampi <- function(scampiData, rescaling=TRUE,
   peptides[,"ccInd"] <-                   # prepro peptides
     sapply(peptides[,"pepId"], getMyCCNr, group="peptides", 
            ccList, verbose)
-  if (rescaling)
-    peptides[,"pepQty"] <- log10(peptides[,"pepQty"])
   peptides[,"nrNeiProt"] <- 
     sapply(peptides[,"pepId"], getMyNeighborhoodSize, 
            group="peptides", edgespp, verbose)

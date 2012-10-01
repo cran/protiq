@@ -8,16 +8,11 @@ Precompute all quantities which will be used (repetitously) for further computat
 Build the bipartite graph, generate the list of connected components, store information about the graph structure for each nodes (e.g. number of neighbors or index of the connected components), optionally transform peptide abundance score.
 }
 \usage{
-\method{preprocessInputData}{scampi}(scampiData, rescaling = TRUE, verbose = FALSE, ...)
+\method{preprocessInputData}{scampi}(scampiData, verbose = FALSE, ...)
 }
 \arguments{
   \item{scampiData}{
   Object of class \code{\linkS4class{scampi}}
-}
-  \item{rescaling}{
-    If TRUE, the peptide abundance scores are logarithmized (log10). If this transformation 
-    has not yet been done during preprocessing, it is strongly recommended to stick to the 
-    default: \code{rescaling=TRUE}.
 }
   \item{verbose}{
     If \code{TRUE}, detailed output is provided.
@@ -44,7 +39,8 @@ This function is called by one of the main functions of the package, \code{\link
 data("leptoSRM")
 dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides, 
                                      proteins=leptoSRMproteins, 
-                                     edgespp=leptoSRMedgespp))
-dataPrepro <- preprocessInputData(dataChecked, rescaling=FALSE)
+                                     edgespp=leptoSRMedgespp),
+                              rescaling=FALSE)
+dataPrepro <- preprocessInputData(dataChecked)
 }
 \keyword{ preprocessing }

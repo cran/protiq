@@ -28,7 +28,8 @@ Sarah Gerster \email{sarah.gerster@isb-sib.ch}
 data("leptoSRM")
 dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides, 
                                      proteins=leptoSRMproteins, 
-                                     edgespp=leptoSRMedgespp))
-dataPrepro <- preprocessInputData(dataChecked, rescaling=FALSE)
+                                     edgespp=leptoSRMedgespp),
+                              rescaling=FALSE)
+dataPrepro <- preprocessInputData(dataChecked)
 }
 \keyword{ preprocessing }

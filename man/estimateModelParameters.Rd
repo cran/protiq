@@ -48,8 +48,9 @@ data("leptoSRM")
 
 dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides, 
                                      proteins=leptoSRMproteins, 
-                                     edgespp=leptoSRMedgespp))
-tmpPrepro <- preprocessInputData(dataChecked, rescaling=TRUE)
+                                     edgespp=leptoSRMedgespp),
+                              rescaling=FALSE)
+tmpPrepro <- preprocessInputData(dataChecked)
 dataPrepro <- tmpPrepro[["dataPrepro"]]
 ppGraph <- tmpPrepro[["ppGraph"]]
 myCCList <- tmpPrepro[["ccList"]]

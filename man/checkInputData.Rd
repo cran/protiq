@@ -31,5 +31,6 @@ checkInputData(scampiData, ...)
 data("leptoSRM")
 dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides,
                                      proteins=leptoSRMproteins, 
-                                     edgespp=leptoSRMedgespp))
+                                     edgespp=leptoSRMedgespp),
+                              rescaling=FALSE)
 }

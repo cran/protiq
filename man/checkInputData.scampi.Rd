@@ -13,11 +13,16 @@ some optional variables are missing, the dataframes are completed with
 default values.
 }
 \usage{
-\method{checkInputData}{scampi}(scampiData, verbose = FALSE, ...)
+\method{checkInputData}{scampi}(scampiData, rescaling = TRUE, verbose = FALSE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{scampiData}{object of class \code{\link{scampi-class}}}
+  \item{rescaling}{
+    If TRUE, the peptide abundance scores are logarithmized (log10). If this transformation 
+    has not yet been done during preprocessing, it is strongly recommended to stick to the 
+    default: \code{rescaling=TRUE}.
+}
   \item{verbose}{if TRUE, basic information are printed to indicate the
     progress of the function}
   \item{\dots}{further arguments}
@@ -37,5 +42,6 @@ default values.
 data("leptoSRM")
 dataChecked <- checkInputData(scampi(peptides=leptoSRMpeptides,
                                      proteins=leptoSRMproteins, 
-                                     edgespp=leptoSRMedgespp))
+                                     edgespp=leptoSRMedgespp),
+                              rescaling=FALSE)
 }

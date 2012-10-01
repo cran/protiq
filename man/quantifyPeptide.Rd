@@ -52,9 +52,10 @@ data("leptoSRM")
 ## check input data
 dataChecked <- checkInputData(scampiData=scampi(peptides=leptoSRMpeptides, 
                                                 proteins=leptoSRMproteins,
-                                                edgespp=leptoSRMedgespp))
+                                                edgespp=leptoSRMedgespp),
+                              rescaling=FALSE)
 ## preprocess input data
-tmpPrepro <- preprocessInputData(scampiData=dataChecked, rescaling=FALSE) 
+tmpPrepro <- preprocessInputData(scampiData=dataChecked) 
 dataPrepro <- tmpPrepro[["dataPrepro"]]
 myCCList <- tmpPrepro[["ccList"]]
 rm(tmpPrepro)	
