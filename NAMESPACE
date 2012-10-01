@@ -1,0 +1,25 @@
+import(
+   "mvtnorm", 
+   "graph", 
+   "RBGL")
+
+importFrom("graphics", plot)
+
+export(
+   "runScampi",
+   "iterateScampi",
+   "estimateModelParameters",
+   "quantifyPeptide",
+   "quantifyProtein",
+   "quantifyProteins",
+   "checkInputData",
+   "preprocessInputData",
+   "getCovU")
+
+S3method("checkInputData", "scampi")
+S3method("preprocessInputData", "scampi")
+
+exportMethods("summary", "show", "plot")
+
+exportClasses("scampi",
+              "scampiVal")
